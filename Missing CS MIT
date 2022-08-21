@@ -1,0 +1,57 @@
+# Aug 21,2022 
+#Lecture 1:Course Overview + The Shell
+
+Shell is the interface with PC. For Linux, it's terminal.
+
+echo is to print what you type in next
+$PATH is the dirs your PC will search 
+which echo
+
+pwd: print working dir
+cd: change dir
+/: root dir
+..: fateher dir
+.:this dir
+ls: list 
+ls ..: cd .. + ls
+~:home dir
+cd -:cd to the previous dir
+
+ls --help: action --help
+
+- + single letter
+-- + double letter
+
+read/ write/ execute permission
+rwx(Owner)r-x(Group)r-x(Other) 这个例子表示的权限是：使用者自己可读，可写，可执行；同一组的用户可读，不可写，可执行；其它用户可读，不可写，可执行。
+
+mv: move, but alse be used as rename
+mv abc.txt bcd.txt :rename abs as bcd
+
+cp: copy
+cp target_file target_path
+
+rm: remove
+rmdir: remove empty dir
+
+man: manual page
+
+<file> file
+echo hello > hello.txt     write hello into hello.txt file
+cat hello.txt              print content of hello.txt file
+cat <hello.txt> hello2.txt    take hello.txt as stream output, and cat the output as input to hello2.txt
+>>: append
+cat <hello.txt> hello2.txt    take hello.txt as stream output, and cat the output as append to hello2.txt
+
+|       :take the output of left and regard it as input to the right
+tail -n: print the last n lines
+eg: ls -l | tail -n1   list the last one line of ls
+
+sudo: do as super user
+# :run as root, to run the shell as sudo program
+sudo su: to run as root, run "exit" to exit
+
+tee: input and stand out it 
+echo 1060 | sudo tee abc.txt result is modify and print the content of abc.txt file as 1060
+
+find: find something
