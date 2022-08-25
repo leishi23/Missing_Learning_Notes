@@ -1,0 +1,98 @@
+https://missing.csail.mit.edu/2020/shell-tools/
+Aug 25 2022
+Shell Tools and Scripting
+
+name a variable in shell:
+foo=bar   # space matters here, not foo = bar
+echo $foo
+
+source a file is to excute it 
+
+mcd: move to cd
+rmdir: remove dir
+
+when do something but permission denied, try sudo !!, it will sudo such action
+
+echo $? is to verify if the latest action right
+0 for right, 1 for wrong
+
+A || B
+excute A, if A fails, try B
+eg: false || echo "ook"
+ook
+true || echo "ook"
+
+A && B
+excute A and then B
+if A fails, it's not going to excute B
+
+A ; B
+is to excute A, and in the second line excute B
+
+foo=$(pwd)
+echo $foo
+echo "We are in the $(pwd)"
+
+cat <(ls) <(ls ..)
+such a < b, is to make b as input to a to excute it.
+
+$ 1:https://bash.cyberciti.biz/guide/$1
+$1 is the first command-line argument passed to the shell script. Also, know as Positional parameters. 
+For example, $0, $1, $3, $4 and so on. If you run ./script.sh filename1 dir1, then:
+    $0 is the name of the script itself (script.sh)
+    $1 is the first argument (filename1)
+    $2 is the second argument (dir1)
+    $9 is the ninth argument
+    
+    
+grep:The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern. The pattern that is 
+searched in the file is referred to as the regular expression (grep stands for global search for regular expression and print out).
+https://www.geeksforgeeks.org/grep-command-in-unixlinux/
+Syntax: grep [options] pattern [files]
+
+-c : This prints only a count of the lines that match a pattern
+-h : Display the matched lines, but do not display the filenames.
+-i : Ignores, case for matching
+-l : Displays list of a filenames only.
+-n : Display the matched lines and their line numbers.
+-v : This prints out all the lines that do not matches the pattern
+-e exp : Specifies expression with this option. Can use multiple times.
+-f file : Takes patterns from file, one per line.
+-E : Treats pattern as an extended regular expression (ERE)
+-w : Match whole word
+-o : Print only the matched parts of a matching line, with each such part on a separate output line.
+-A n : Prints searched line and nlines after the result.
+-B n : Prints searched line and n line before the result.
+-C n : Prints searched line and n lines after before the result.
+
+.sh   the excutable file
+
+ls XXXX?
+to ls XXXX* and its location
+
+convert image.png image.jpg
+
+touch :The touch command is a standard command used in UNIX/Linux operating system which is used to create, change and modify timestamps of a file.
+
+{} can be expanded to many things automatically
+convert image.{png,jpg} will be transferred to convert image.png image.jpg
+touch foo{1,2,3} = touch foo1 foo2 foo3
+
+python XXX.py arg1 arg2 
+
+shellcheck file_name: to check the syntax of that file_name
+
+man command_name: command_name -help
+
+tldr: to show some examples
+
+find . -name file_name location -option
+find . -path '**/test/*.py' -type f
+find . -name '.temp' -exec rm {} \
+
+locate file_name: much faster
+
+history: to show the command history
+history 1 | grep xxxx
+
+ctrl + R to search the command history
