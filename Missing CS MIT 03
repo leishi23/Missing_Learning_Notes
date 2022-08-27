@@ -61,3 +61,8 @@ y to copy / “yank” (some other commands like d also copy)
 p to paste
 Lots more to learn: e.g. ~ flips the case of a character
 
+vim的四种退出方式的应用
+：q	退出，文件没有改变时应用
+：wq	退出，保存文件
+： q!	强制退出不保存，在改变文件后不想保存时，使用
+：wq!	强制退出保存，在对只读文件编写时使用，
