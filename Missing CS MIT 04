@@ -1,0 +1,34 @@
+Aug 28,2022
+Data Wrangling
+https://missing.csail.mit.edu/2020/data-wrangling/
+
+Data wrangling is to take data in one format and turn it into a different format. Like | sign.
+
+To wrangle data, we need two things: data to wrangle, and something to do with it. 
+
+sed: a stream editor
+
+  sed 's/.*Disconnected from //' replace any character (zero or more) started with "Disconnected from" with blank
+
+  . means “any single character” except newline
+  * zero or more of the preceding match
+  + one or more of the preceding match
+  [abc] any one character of a, b, and c
+  (RX1|RX2) either something that matches RX1 or RX2
+  ^ the start of the line
+  $ the end of the line
+
+  echo 'abcaba' | sed -E 's/(ab)*//g'
+  ca
+  echo 'abbc' | sed -E 's/(ab*)//g'
+  c
+
+awk: a programming language that just happens to be really good at processing text streams. 
+
+You can do math directly in your shell using bc, a calculator that can read from STDIN! For example, add the numbers on each line together by concatenating them together, delimited by +:
+
+ | paste -sd+ | bc -l
+
+Or produce more elaborate expressions:
+
+echo "2*($(data | paste -sd+))" | bc -l
