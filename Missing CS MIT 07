@@ -1,0 +1,12 @@
+Aug 31 2022
+Debuging and Profiling
+https://missing.csail.mit.edu/2020/debugging-profiling/
+
+“The most effective debugging tool is still careful thought, coupled with judiciously placed print statements” — Brian Kernighan, Unix for Beginners.
+
+
+printf()
+
+log file
+In UNIX systems, it is commonplace for programs to write their logs under /var/log. 
+
