@@ -1,1 +1,38 @@
+Sept 04 2022
+Metaprogramming
+https://missing.csail.mit.edu/2020/metaprogramming/
 
+“metaprogramming” can also mean “programs that operate on programs”
+
+For most projects, whether they contain code or not, there is a “build process”. Some sequence of operations you need to do to go from your inputs to 
+your outputs. 
+
+These are usually called “build systems”, and there are many of them. Which one you use depends on the task at hand, your language of preference, and 
+the size of the project. At their core, they are all very similar though. You define a number of dependencies, a number of targets, and rules for going 
+from one to the other. You tell the build system that you want a particular target, and its job is to find all the transitive dependencies of that target, 
+and then apply the rules to produce intermediate targets all the way until the final target has been produced.
+
+example:
+paper.pdf: paper.tex plot-data.png
+	pdflatex paper.tex
+
+plot-%.png: %.dat plot.py
+	./plot.py -i $*.dat -o $@
+
+Each directive in this file is a rule for how to produce the left-hand side using the right-hand side. Or, phrased differently, the things named on 
+the right-hand side are dependencies, and the left-hand side is the target.
+
+At a more macro level, your software projects are likely to have dependencies that are themselves projects. You might depend on installed programs 
+(like python), system packages (like openssl), or libraries within your programming language (like matplotlib). These days, most dependencies will be 
+available through a repository that hosts a large number of such dependencies in a single place, and provides a convenient mechanism for installing them. 
+Some examples include the Ubuntu package repositories for Ubuntu system packages, which you access through the apt tool.
+
+versioning
+
+semantic versioning: major.minor.patch
+
+    If a new release does not change the API, increase the patch version.
+    If you add to your API in a backwards-compatible way, increase the minor version.
+    If you change the API in a non-backwards-compatible way, increase the major version.
+
+Continuous integration, or CI, is an umbrella term for “stuff that runs whenever your code changes”
