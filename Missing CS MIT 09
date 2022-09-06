@@ -1,1 +1,113 @@
+Potpourri
+6 Sept, 2022
+https://missing.csail.mit.edu/2020/potpourri/
 
+keyboard remapping
+
+
+Daemons:
+
+      Most computers have a series of processes that are always running in the background rather than waiting for a user to launch them and interact with them. 
+      These processes are called daemons and the programs that run as daemons often end with a d to indicate so. For example sshd, the SSH daemon, is the 
+      program responsible for listening to incoming SSH requests and checking that the remote user has the necessary credentials to log in.
+
+      In Linux, systemd (the system daemon) is the most common solution for running and setting up daemon processes. You can run systemctl status to list the 
+      current running daemons. Most of them might sound unfamiliar but are responsible for core parts of the system such as managing the network, solving DNS 
+      queries or displaying the graphical interface for the system. Systemd can be interacted with the systemctl command in order to enable, disable, start, stop,
+      restart or check the status of services (those are the systemctl commands).
+
+      Also, if you just want to run some program with a given frequency there is no need to build a custom daemon, you can use cron, a daemon your system already 
+      runs to perform scheduled tasks.
+
+
+Fuse:
+
+      Modern software systems are usually composed of smaller building blocks that are composed together. Your operating system supports using different 
+      filesystem backends because there is a common language of what operations a filesystem supports. For instance, when you run touch to create a file,
+      touch performs a system call to the kernel to create the file and the kernel performs the appropriate filesystem call to create the given file. A caveat 
+      is that UNIX filesystems are traditionally implemented as kernel modules and only the kernel is allowed to perform filesystem calls.
+
+      FUSE (Filesystem in User Space) allows filesystems to be implemented by a user program. FUSE lets users run user space code for filesystem calls and then 
+      bridges the necessary calls to the kernel interfaces. In practice, this means that users can implement arbitrary functionality for filesystem calls.
+
+
+Back up:
+
+      Many methods are not reliable.
+
+
+API:
+
+      some are with token.
+
+
+Common command-line flags/patterns:
+
+
+
+      Most tools support some kind of --help flag to display brief usage instructions for the tool.
+
+      Many tools that can cause irrevocable change support the notion of a “dry run” in which they only print what they would have done, but do not actually 
+      perform the change. Similarly, they often have an “interactive” flag that will prompt you for each destructive action.
+
+      You can usually use --version or -V to have the program print its own version (handy for reporting bugs!).
+
+      Almost all tools have a --verbose or -v flag to produce more verbose output. You can usually include the flag multiple times (-vvv) to get more 
+      verbose output, which can be handy for debugging. Similarly, many tools have a --quiet flag for making it only print something on error.
+
+      In many tools, - in place of a file name means “standard input” or “standard output”, depending on the argument.
+
+      Possibly destructive tools are generally not recursive by default, but support a “recursive” flag (often -r) to make them recurse.
+
+      Sometimes, you want to pass something that looks like a flag as a normal argument. For example, imagine you wanted to remove a file called -r. Or you
+      want to run one program “through” another, like ssh machine foo, and you want to pass a flag to the “inner” program (foo). The special argument 
+      -- makes a program stop processing flags and options (things starting with -) in what follows, letting you pass things that look like flags without 
+      them being interpreted as such: rm -- -r or ssh machine --for-ssh -- foo --for-foo.
+
+
+Window managers:
+
+
+VPNs:
+
+      A VPN, in the best case, is really just a way for you to change your internet service provider as far as the internet is concerned. All your traffic will 
+      look like it’s coming from the VPN provider instead of your “real” location, and the network you are connected to will only see encrypted traffic.
+
+      While that may seem attractive, keep in mind that when you use a VPN, all you are really doing is shifting your trust from you current ISP to the VPN 
+      hosting company.
+
+      Malicious VPN
+
+
+Markdown:
+
+      Syntax can be easily accessed on CSDN.
+
+      Emphasis (italics) is added by surrounding a word with *. 
+      Strong emphasis (bold) is added using **.
+      Lines starting with # are headings (and the number of #s is the subheading level). 
+      Any line starting with - is a bullet list item, 
+      and any line starting with a number + . is a numbered list item. 
+      Backtick is used to show words in code font, and a code block can be entered by indenting a line with four spaces or surrounding it with triple-backticks:
+
+      ```
+      code goes here
+      ```
+
+      To add a link, place the text for the link in square brackets, and the URL immediately following that in parentheses: [name](url).
+
+
+Booting;
+
+      When your machine boots up, before the operating system is loaded, the BIOS/UEFI initializes the system. During this process, you can press a 
+      specific key combination to configure this layer of software. For example, your computer may say something like “Press F9 to configure BIOS. 
+      Press F12 to enter boot menu.” during the boot process. You can configure all sorts of hardware-related settings in the BIOS menu. You can also
+      enter the boot menu to boot from an alternate device instead of your hard drive.
+      
+Docker, Vagrant, VMs, Cloud, OpenStack:
+
+      Virtual machines and similar tools like containers let you emulate a whole computer system, including the operating system. This can be useful 
+      for creating an isolated environment for testing, development, or exploration (e.g. running potentially malicious code).
+
+      Vagrant is a tool that lets you describe machine configurations (operating system, services, packages, etc.) in code, and then instantiate VMs
+      with a simple vagrant up. Docker is conceptually similar but it uses containers instead.
